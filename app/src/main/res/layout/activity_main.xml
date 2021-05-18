@@ -4,27 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ui.MainActivity"
     android:background="#06153C">
 
-    <TextView
-        android:id="@+id/tv_heading"
+    <LinearLayout
+        android:id="@+id/ll_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="INNO GALLERY"
-        android:textColor="#31FAF3"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:paddingTop="12dp"
-        android:paddingBottom="8dp"
-        android:textSize="22sp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-         />
+        android:gravity="center">
+        <TextView
+            android:id="@+id/tv_heading"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="INNO GALLERY"
+            android:textColor="#31FAF3"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:textSize="22sp"
+            />
+        <ImageView
+            android:id="@+id/iv_search_img"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_weight="0.2"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp"
+        android:text="Connection problem"
+        android:textColor="#31FAF3"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,17 +67,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_heading"
+        app:layout_constraintTop_toBottomOf="@+id/ll_top"
         android:orientation="vertical"
         android:visibility="gone"
         android:layout_marginTop="48dp"
         tools:listitem="@layout/item_layout"
         tools:visibility="visible" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

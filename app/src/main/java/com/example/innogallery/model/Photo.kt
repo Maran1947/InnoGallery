@@ -1,4 +1,4 @@
-package com.example.innogallery
+package com.example.innogallery.model
 
 data class Photo(
     val farm: Int,

@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.innogallery.repository.GalleryRepository
 
-class GalleryViewModelFactory(private val galleryRepository: GalleryRepository):
-    ViewModelProvider.Factory {
+class SearchViewModelFactory(private val galleryRepository: GalleryRepository):
+        ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return GalleryViewModelKT(galleryRepository) as T
+        return SearchImageViewModelKT(galleryRepository) as T
     }
 }

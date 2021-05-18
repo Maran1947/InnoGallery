@@ -1,24 +1,16 @@
-package com.example.innogallery
+package com.example.innogallery.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.ImageView
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.example.innogallery.R
 import com.example.innogallery.adapter.GalleryAdapter
-import com.example.innogallery.repository.GalleryRepository
-import com.example.innogallery.util.Resource
-import com.example.innogallery.viewmodel.GalleryViewModel
-import com.example.innogallery.viewmodel.GalleryViewModelFactory
+
 
 class FullScreenActivity : AppCompatActivity() {
 
     private lateinit var galleryAdapter: GalleryAdapter
-    private lateinit var galleryViewModel: GalleryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

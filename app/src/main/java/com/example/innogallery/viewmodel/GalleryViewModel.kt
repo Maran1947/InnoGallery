@@ -1,38 +1,70 @@
 package com.example.innogallery.viewmodel
+//
+//import androidx.lifecycle.*
+//import androidx.paging.PagingData
+//import com.example.innogallery.model.Photo
+//import io.reactivex.disposables.CompositeDisposable
+//import kotlinx.coroutines.ExperimentalCoroutinesApi
+//
+//
+//@ExperimentalCoroutinesApi
+//class GalleryViewModel() : ViewModel() {
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.innogallery.ApiResponse
-import com.example.innogallery.repository.GalleryRepository
-import com.example.innogallery.util.Resource
-import kotlinx.coroutines.launch
-import retrofit2.Response
+//    private val compositeDisposable = CompositeDisposable()
 
-class GalleryViewModel(private val galleryRepository: GalleryRepository): ViewModel() {
+//    private val galleryRepository = GalleryRepository(imagePagingSource)
+//    private val imagePagingSource = ImagePagingSource()
 
-    val latestImages: MutableLiveData<Resource<ApiResponse>> = MutableLiveData()
+//    var imageList: MutableLiveData<PagingData<Photo>> = MutableLiveData()
 
-    fun getImages() {
-        viewModelScope.launch {
-           try {
-               latestImages.postValue(Resource.Loading())
-               val response = galleryRepository.getImages()
-               latestImages.postValue(handleBreakingResponse(response))
-           } catch (e: Exception) {
-               Log.d("Gallery", "getImages: ${e.message}")
-           }
-        }
-    }
+//    init {
+//        RetrofitInstance.api.getLatestPhotos()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(getImageListObserverRx())
 
-    private fun handleBreakingResponse(response: Response<ApiResponse>): Resource<ApiResponse> {
-        if(response.isSuccessful) {
-            response.body()?.let { resultResponse ->
-                return Resource.Success(resultResponse)
-            }
-        }
+//        compositeDisposable.add(
+//                latestImages()
+//                        .cachedIn(viewModelScope)
+//                        .subscribe {
+//                            imageList.postValue(it)
+//                        }
+//        )
 
-        return Resource.Error(response.message())
-    }
-}
+//    }
+
+//
+//    private fun latestImages(): Flowable<PagingData<Photo>> {
+//        return Pager(
+//                config = PagingConfig(
+//                        pageSize = 6
+//                ),
+//        pagingSourceFactory = { ImagePagingSource() }
+//        ).flowable
+//    }
+
+//    fun getImageListObserverRx(): Observer<ApiResponse> {
+//        return object : Observer<ApiResponse> {
+//            override fun onComplete() {
+//                //hide progress indicator
+//            }
+//
+//            override fun onNext(t: ApiResponse) {
+//                imageList.postValue(t)
+//            }
+//
+//            override fun onError(e: Throwable) {
+//                imageList.postValue(null)
+//            }
+//            override fun onSubscribe(d: Disposable) {
+//                //start progress bar
+//            }
+//        }
+//    }
+//
+//    override fun onCleared() {
+//        super.onCleared()
+//        compositeDisposable.dispose()
+//    }
+
+//}
